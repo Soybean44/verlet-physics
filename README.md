@@ -1,14 +1,14 @@
 # Verlet Integration Physics
 This is a toy repo to mess with creating my own physics engine
 
-## Currently Implemented
+## Currently, Implemented
 - Gravity
-- Bouncing on at bottom of the screen
+- Bouncing
 - Elasticity
 
 ## To-do:
 - Spawning more balls
-- Collisions with other sides of the screen and other balls
-- Bouncing on other sides of the screen and other balls
+- Friction
+- Collisions with other balls
 - Chains
 - Cloth

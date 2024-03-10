@@ -9,7 +9,7 @@ class Ball {
 	int size;
 	Color color;
 	float time;
-	float velocity;
+	raylib::Vector2 velocity;
 
   public:
 	Ball(float x, float y, int s, Color c = RAYWHITE);
