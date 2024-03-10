@@ -1,0 +1,17 @@
+[
+  {
+    "arguments": [
+      "/usr/bin/g++",
+      "-c",
+      "-std=c++17",
+      "-I",
+      "include",
+      "-o",
+      "bin/main.o",
+      "src/main.cpp"
+    ],
+    "directory": "/home/soybean44/code/cpp/verlet-physics",
+    "file": "/home/soybean44/code/cpp/verlet-physics/src/main.cpp",
+    "output": "/home/soybean44/code/cpp/verlet-physics/bin/main.o"
+  }
+]
