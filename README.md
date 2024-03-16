@@ -5,10 +5,11 @@ This is a toy repo to mess with creating my own physics engine
 - Gravity
 - Bouncing
 - Elasticity
-
-## To-do:
 - Spawning more balls
 - Collisions with other balls
+- Momentum with other balls
+
+## To-do:
 - Dynamics
 - Orbiting
 - Friction
