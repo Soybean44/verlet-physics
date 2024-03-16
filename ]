@@ -69,12 +69,13 @@ void Ball::Collide(Ball *b) {
 
 		// momentum
 		float e = 5;
-		float dv = velocity.x - b->velocity.x;
+		float dv = b->velocity.x - velocity.x;
 		float dt = 1;
 		if (dv != 0) {
+			raylib::Vector2 r = collision_axis/(dv);
 			float pa = size*velocity.x;
 			float pb = size*velocity.x;
-			float F = (e*dv);
+			float F = (e*r.x);
 			pb = pb + F*dt;
 			pa = pa - F*dt;
 			b->velocity.x = pb/b->size;
@@ -88,7 +89,7 @@ void Ball::Collide(Ball *b) {
 			raylib::Vector2 r = collision_axis/(dv);
 			float pa = size*velocity.y;
 			float pb = size*velocity.y;
-			float F = (e*dv);
+			float F = (e*r.y);
 			pb = pb + F*dt;
 			pa = pa - F*dt;
 			b->velocity.y = pb/b->size;

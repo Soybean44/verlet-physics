@@ -8,7 +8,9 @@ This is a toy repo to mess with creating my own physics engine
 
 ## To-do:
 - Spawning more balls
-- Friction
 - Collisions with other balls
+- Dynamics
+- Orbiting
+- Friction
 - Chains
 - Cloth
