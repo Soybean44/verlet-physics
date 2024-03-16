@@ -58,7 +58,7 @@ void Ball::Collide(Ball *b) {
 	const raylib::Vector2 collision_axis = position - b->position;
 	float dist = collision_axis.Length();
 	if (dist < size+b->size) { // check if balls are colliding
-		// momentum
+		// momentum X
 		float e = 5;
 		float dv = velocity.x - b->velocity.x;
 		float dt = 1;
@@ -74,6 +74,7 @@ void Ball::Collide(Ball *b) {
 			position.x = position.x + pb*dt/b->size;
 		}
 
+		// momentum Y
 		dv = b->velocity.y - velocity.y;
 		if (dv != 0) {
 			raylib::Vector2 r = collision_axis/(dv);
