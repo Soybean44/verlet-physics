@@ -57,16 +57,7 @@ void Ball::Update(float dt, raylib::Vector2 a, int screenWidth, int screenHeight
 void Ball::Collide(Ball *b) {
 	const raylib::Vector2 collision_axis = position - b->position;
 	float dist = collision_axis.Length();
-	if (dist < size+b->size) {
-		const raylib::Vector2 n = collision_axis / dist;
-		const float delta = (size+b->size)-dist;
-
-		// static resolution
-		position.x += 0.5f * delta * n.x;
-		position.y += 0.5f * delta * n.y;
-		b->position.x -= 0.5f * delta * n.x;
-		b->position.y -= 0.5f * delta * n.y;
-
+	if (dist < size+b->size) { // check if balls are colliding
 		// momentum
 		float e = 5;
 		float dv = velocity.x - b->velocity.x;

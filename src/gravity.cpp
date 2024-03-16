@@ -12,18 +12,18 @@ Gravity::Gravity(int w, int h) {
 
 void Gravity::Update(Color bgColor) {
 	ClearBackground(bgColor);
+
+	// spawn new balls
 	if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
 		balls.push_back(Ball(raylib::Vector2((float)GetMouseX(), (float)GetMouseY()), 25, raylib::Vector2(0,0), ball_1_Color));
 	}
 
 	for(int i=0; i<balls.size(); i++) {
-		// Update
 		balls[i].Update(0.7, raylib::Vector2(0,1), screenWidth, screenHeight);
 		for(int j=0; j<balls.size(); j++) {
 			if (i != j)
 				balls[i].Collide(&balls[j]);
 		}
-		// Draw
 		balls[i].Draw();
 	}
 }
