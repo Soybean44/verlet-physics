@@ -58,37 +58,18 @@ void Ball::Collide(Ball *b) {
 	const raylib::Vector2 collision_axis = position - b->position;
 	float dist = collision_axis.Length();
 	if (dist < size+b->size) { // check if balls are colliding
-		// momentum X
-		float e = 5;
-		float dv = velocity.x - b->velocity.x;
-		float dt = 1;
-		if (dv != 0) {
-			float pa = size*velocity.x;
-			float pb = size*velocity.x;
-			float F = (e*dv);
-			pb = pb + F*dt;
-			pa = pa - F*dt;
-			b->velocity.x = pb/b->size;
-			velocity.x = pa/size;
-			b->position.x = b->position.x + pb*dt/b->size;
-			position.x = position.x + pb*dt/b->size;
-		}
-
-		// momentum Y
-		dv = b->velocity.y - velocity.y;
-		if (dv != 0) {
-			raylib::Vector2 r = collision_axis/(dv);
-			float pa = size*velocity.y;
-			float pb = size*velocity.y;
-			float F = (e*dv);
-			pb = pb + F*dt;
-			pa = pa - F*dt;
-			b->velocity.y = pb/b->size;
-			velocity.y = pa/size;
-			b->position.y = b->position.y + pb*dt/b->size;
-			position.y = position.y + pb*dt/b->size;
-		}
-
+		raylib::Vector2 n = collision_axis/dist;
+		raylib::Vector2 delta = (size+b->size) - dist;
+		float dx = 0.5f * delta.x * n.x;
+		float dy = 0.5f * delta.y * n.y;
+		raylib::Vector2 tmpPos = position;
+		raylib::Vector2 tmpPosB = b->position;
+		position.x += dx;
+		position.y += dy;
+		b->position.x -= dx;
+		b->position.y -= dy;
+		velocity = position-tmpPos;
+		b->velocity = b->position-tmpPosB;
 	}
 }
 
