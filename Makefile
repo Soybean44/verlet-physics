@@ -13,7 +13,8 @@ platformpth = $(subst /,$(PATHSEP),$1)
 buildDir := bin
 executable := app
 target := $(buildDir)/$(executable)
-sources := $(call rwildcard,src/,*.cpp)
+# sources := $(call rwildcard,src/,*.cpp)
+sources := $(shell fd .cpp src/)
 objects := $(patsubst src/%, $(buildDir)/%, $(patsubst %.cpp, %.o, $(sources)))
 depends := $(patsubst %.o, %.d, $(objects))
 compileFlags := -std=c++17 -I include
@@ -58,7 +59,10 @@ endif
 .PHONY: all setup submodules execute clean
 
 # Default target, compiles, executes and cleans
-all: $(target) execute clean
+all: include $(target) execute clean
+
+# Runs the program without importing include files
+run: $(target) execute clean
 
 # Sets up the project for compiling, generates includes and libs
 setup: include lib
@@ -73,6 +77,8 @@ include: submodules
 	$(call COPY,vendor/raylib/src,./include,raylib.h)
 	$(call COPY,vendor/raylib/src,./include,raymath.h)
 	$(call COPY,vendor/raylib-cpp/include,./include,*.hpp)
+	$(call COPY,vendor/raylib-cpp/include,./include,*.hpp)
+	$(shell fd .hpp src/ | xargs cp -t ./include/)
 
 # Build the raylib static library file and copy it into lib
 lib: submodules

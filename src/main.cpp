@@ -1,4 +1,5 @@
 #include "gravity.hpp"
+#include "orbit.hpp"
 #include "raylib.h"
 #include <raylib-cpp.hpp>
 
@@ -16,11 +17,13 @@ int main() {
 	SetTargetFPS(60);
 
 	Gravity g = Gravity(screenWidth, screenHeight);
+	Orbit o = Orbit(screenWidth, screenHeight);
 
 	// Main game loop
 	while (!w.ShouldClose()) { // Detect window close button or ESC key
 		BeginDrawing();
-		g.Update(bgColor);
+		//g.Update(bgColor);
+		o.Update(bgColor);
 		EndDrawing();
 	}
 
