@@ -20,8 +20,10 @@ void Ball::Update(float dt, raylib::Vector2 a, int screenWidth, int screenHeight
 	position.x = position.x + velocity.x * dt + 0.5 * a.x * dt * dt;
 	velocity.y += a.y * dt;
 	velocity.x += a.x * dt;
+}
 
-	// bounce on the bottom of the screen
+void Ball::Bounce(int screenWidth, int screenHeight) {
+// bounce on the bottom of the screen
 	if (position.y+size > screenHeight) {
 		position.y = screenHeight-size;
 
@@ -52,6 +54,7 @@ void Ball::Update(float dt, raylib::Vector2 a, int screenWidth, int screenHeight
 			velocity.x = 0;
 		}
 	}
+
 }
 
 void Ball::Collide(Ball *b) {

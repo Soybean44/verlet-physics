@@ -20,6 +20,7 @@ void Gravity::Update(Color bgColor) {
 
 	for(int i=0; i<balls.size(); i++) {
 		balls[i].Update(0.7, raylib::Vector2(0,1), screenWidth, screenHeight);
+		balls[i].Bounce(screenWidth, screenHeight);
 		for(int j=0; j<balls.size(); j++) {
 			if (i != j)
 				balls[i].Collide(&balls[j]);
